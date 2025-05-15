@@ -45,7 +45,7 @@ function FlyToLocation({ position }: { position: [number, number] }) {
 
 //getting coordinates for an address from google maps api
 async function getCoordinatesFromAddress(address: string) {
-  const apiKey = "AIzaSyAaoONHJ6KYstnR_x5dXr6h5-yEm2x1Unw";
+  const apiKey = process.env.API_key;
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
     address
   )}&key=${apiKey}`;

@@ -22,7 +22,7 @@ export default function WeatherChartComponent({ lat, lon }: WeatherChartProps) {
   useEffect(() => {
     async function fetchWeather() {
       try {
-        const apiKey = "45017ea56ecca68d10012b50cec53ea5";
+        const apiKey = process.env.API_key;
         const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
         const res = await axios.get(url);
 
