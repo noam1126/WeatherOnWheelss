@@ -26,7 +26,7 @@ public class PlaceController : ControllerBase
     {
         if (newPlace.Name.Length > 25)
         {
-            return BadRequest("Name must be 25 characters or fewer.");
+            return BadRequest("Name must be 25 characters or less.");
         }
 
         await _placeService.AddAsync(newPlace);

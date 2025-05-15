@@ -14,9 +14,9 @@ public class PlaceService
     public PlaceService(IOptions<WeatherOnWheelsDatabaseSettings> dbSettings)
     {
         var mongoClient = new MongoClient(dbSettings.Value.ConnectionString);
-        var mongoDatabase = mongoClient.GetDatabase(dbSettings.Value.DatabaseName);
+        var mongoDB = mongoClient.GetDatabase(dbSettings.Value.DatabaseName);
 
-        _placesCollection = mongoDatabase.GetCollection<Place>(dbSettings.Value.PlacesCollectionName);
+        _placesCollection = mongoDB.GetCollection<Place>(dbSettings.Value.PlacesCollectionName);
     }
 
     public async Task<List<Place>> GetAsync() =>

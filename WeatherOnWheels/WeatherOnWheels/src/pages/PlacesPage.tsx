@@ -34,6 +34,7 @@ type Place = {
   };
 };
 
+//fling to some place
 function FlyToLocation({ position }: { position: [number, number] }) {
   const map = useMap();
   useEffect(() => {
@@ -42,6 +43,7 @@ function FlyToLocation({ position }: { position: [number, number] }) {
   return null;
 }
 
+//getting coordinates for an address from google maps api
 async function getCoordinatesFromAddress(address: string) {
   const apiKey = "AIzaSyAaoONHJ6KYstnR_x5dXr6h5-yEm2x1Unw";
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
@@ -58,6 +60,7 @@ async function getCoordinatesFromAddress(address: string) {
   }
 }
 
+//Create new place popup
 function CreatePlacePopup({
   onClose,
   onPlaceCreated,
@@ -71,6 +74,7 @@ function CreatePlacePopup({
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  //After clicking submit in the creating new place popup
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (name.length > 25) {
@@ -179,7 +183,7 @@ export default function PlacesPage() {
     <div className="places-container">
       <div className="map-section">
         <MapContainer
-          center={[32.0853, 34.7818]}
+          center={[32.0853, 34.7818]} //Tel aviv
           zoom={13}
           style={{ height: "100%", width: "100%" }}
         >
@@ -198,7 +202,9 @@ export default function PlacesPage() {
                 key={`${place.id}-${place.name}`}
                 position={[place.location!.lat, place.location!.lng]}
               >
-                <Popup>{place.name}</Popup>
+                <Popup>
+                  {place.name} <dt>{place.address}</dt>
+                </Popup>
               </Marker>
             ))}
 

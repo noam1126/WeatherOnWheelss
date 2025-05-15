@@ -29,7 +29,7 @@ const CreatePlacePage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (name.length > 25) {
-      alert("Name must be 25 characters or fewer.");
+      alert("Name must be 25 characters or less.");
       return;
     }
 
